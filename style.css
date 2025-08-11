@@ -1,21 +1,302 @@
+/* Botão animado ao passar o mouse */
+button, .btn, input[type="submit"], input[type="button"], a {
+    transition: transform 0.2s cubic-bezier(.4,0,.2,1);
+}
+button:hover, .btn:hover, input[type="submit"]:hover, input[type="button"]:hover, a:hover {
+    transform: scale(0.92);
+}
 @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&family=UnifrakturMaguntia&display=swap');
 
-* {
-    background-color: #1D252B;
+/* Imagem de fundo animada para apresentação */
+.apresentacao-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('img/IFMT.png') center center/cover no-repeat;
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+    display: block;
+}
+
+/* Imagem de fundo animada para skills */
+.skills-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('img/Design.png') center center/cover no-repeat;
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+    display: block;
+}
+
+/* Imagem de fundo animada para works */
+.works-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('img/trabalho.jpg') center center/cover no-repeat;
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+    display: block;
+}
+
+#works.in-view .works-bg {
+    opacity: 0.25;
+}
+
+#skills.in-view .skills-bg {
+    opacity: 0.25;
+}
+
+#apresentacao.in-view .apresentacao-bg {
+    opacity: 0.25;
+}
+#apresentacao {
+    position: relative;
+    overflow: hidden;
+}
+
+#apresentacao.in-view .apresentacao-bg {
+    opacity: 0.25;
+}
+
+section#skills,
+section#projects,
+section#works {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 40px 0;
+}
+
+@media (max-width: 600px) {
+    section#skills,
+    section#projects,
+    section#works {
+        padding: 20px 0;
+    }
+}
+
+body, html {
+    background: radial-gradient(circle at var(--x, 50vw) var(--y, 50vh), #303e4d 200px, #1D252B 100vw);
+    transition: background 0.2s;
     color: #dddddd;
+    font-family: 'Kantumruy Pro', sans-serif;
     margin: 0;
     padding: 0;
+    height: 100%;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+header {
+    margin-top: 50px;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
-header{
-    text-align: center;
-    margin-top: 20px;
+@media (max-width: 600px) {
+    header {
+        padding: 20px;
+    }
+    header img {
+        width: 150px;
+    }
 }
-
 header > h1 {
     font-family: 'Kantumruy Pro', sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 3em;
+    text-shadow: 2px 4px 12px #000, 0 0 8px #2c3e50;
+}
+
+header > h2 {
+    font-family: 'Kantumruy Pro', sans-serif;
+    font-weight: 300;
+    font-size: 1.5em;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-shadow: 1px 2px 8px #000, 0 0 4px #2c3e50;
+}
+
+header > img {
+    border-radius: 50px;
+    box-shadow: 0 8px 32px 0 rgba(44,62,80,0.7), 0 1.5px 8px 0 rgba(0,0,0,0.5);
+}
+
+header > nav{
+    padding: 0px 10px;
+    margin-bottom: 50px;
+    display: flex;
+    gap: 20px;
+}
+
+header > nav a {
+    color: #dddddd;
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 1px 2px 8px #000, 0 0 4px #2c3e50;
+}
+
+header > #apresentacao {
+    font-family: 'Kantumruy Pro', sans-serif;
+    font-weight: 400;
+    font-size: 1.5em;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    margin-top: 0;
+    text-align: center;
+    text-shadow: 1px 2px 8px #000, 0 0 4px #2c3e50;
+}
+
+header > #apresentacao p {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+header > p {
+    padding: 0 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#skills {
+    font-family: 'Kantumruy Pro', sans-serif;
+    font-weight: 400;
+    font-size: 1.5em;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+#skills h1, #projects h1, #works h1 {
+    text-shadow: 2px 4px 12px #000, 0 0 8px #2c3e50;
+}
+
+#skills li {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 1px 2px 8px #000, 0 0 4px #2c3e50;
+}
+
+
+
+#projects {
+    font-family: 'Kantumruy Pro', sans-serif;
+    font-weight: 400;
+    font-size: 1.5em;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#projects ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-shadow: 1px 2px 8px #000, 0 0 4px #2c3e50;
+}
+
+#works {
+    font-family: 'Kantumruy Pro', sans-serif;
+    font-weight: 400;
+    font-size: 1.5em;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+#works  ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-shadow: 1px 2px 8px #000, 0 0 4px #2c3e50;
+}
+
+#works a {
+    color: #dddddd;
+    text-decoration: none;
+    font-weight: 400;
+    transition: transform 0.2s cubic-bezier(.4,0,.2,1);
+    text-shadow: 1px 2px 8px #000, 0 0 4px #2c3e50;
+}
+
+#works a:hover {
+    transform: scale(0.92);
+}
+
+#works ul li {
+    margin-bottom: 5px;
+    text-shadow: 1px 2px 8px #000, 0 0 4px #2c3e50;
+}
+
+#works ul li a#music {
+    font-weight: bold;
+    color: #ffcc00;
+    text-shadow: 1px 2px 8px #000, 0 0 4px #ffcc00;
+}   
+
+footer {
+    background-color: rgb(17, 24, 30);
+    color: #dddddd;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 50px;
+}
+
+footer >a {
+    color: #dddddd;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s cubic-bezier(.4,0,.2,1);
+    text-shadow: 1px 2px 8px #000, 0 0 4px #2c3e50;
+}
+
+footer >a:hover {
+    transform: scale(0.92);
 }
